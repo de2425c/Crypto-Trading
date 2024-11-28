@@ -39,8 +39,6 @@ async def track_trades(uri, filename):
                 if usd_size > 15000:
                     trade_time = datetime.fromtimestamp(data['T'] / 1000, pytz.utc)
                     readable_trade_time = trade_time.strftime('%Y-%m-%d %H:%M:%S')
-
-                # Write trade to CSV
                     with open(filename, 'a') as f:
                         f.write(f"{data['E']}, {data['s']}, {data['a']}, {data['p']}, {data['q']}, {readable_trade_time}, {data['m']}\n")
 
